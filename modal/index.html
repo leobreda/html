@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="stylesheet.css" />
+    <link rel="stylesheet" type="text/css" href="modal.css" />
+    <script type="text/javascript" src="modal.js"></script>
+
+    <title>Modal</title>
+</head>
+<body>
+
+
+<h1>Modal</h1>
+Lorem ipsum samet dolor
+<hr />
+<h2>modal.text</h2>
+
+<p>Modal contendo texto normal. Aceita código html</p>  
+<table>
+    <tr>
+        <td style="width:50%;">
+        <pre>
+modal.text('Aqui vai um texto simples');
+</pre>
+        <p align="center"><a href="javascript:void(0);" onclick="javascript:modal.text('Aqui vai um texto simples');">Clique aqui</a></p>
+
+
+        </td>
+        <td style="width:auto;">
+        <pre>
+modal.text('Aqui vai um texto com código &lt;strong&gt;html&lt;/strong&gt;');
+</pre>
+        <p align="center"><a href="javascript:void(0);" onclick="javascript:modal.text('Aqui vai um texto com código <strong>html</strong>');">Clique aqui</a></p>
+
+
+        </td>
+                    
+    </tr>
+</table>
+<hr />
+
+
+<h2>Argumentos</h2>
+
+<table>
+    <tr>
+        <td style="width:33%;">
+            <p>title: Determina um título ao modal</p>
+<pre>
+modal.text('Lorem Ipsum is samet dolor',{
+    title:'Lorem Ipsum'
+});
+</pre>
+            <p align="center"><a href="javascript:void(0);" onclick="javascript:modal.text('Lorem Ipsum is samet dolor',{title:'Lorem Ipsum'});">Clique aqui</a></p>
+                   
+
+        </td>
+        <td style="width:auto;">
+<p>width: Estabelece a largura do modal</p>
+<pre>
+modal.text('Lorem Ipsum is samet dolor',{
+    title:'Lorem Ipsum',
+    width:'20%'
+});
+</pre>
+<p align="center"><a href="javascript:void(0);" onclick="javascript:modal.text('Lorem Ipsum is samet dolor',{title:'Lorem Ipsum',width:'20%'});">Clique aqui</a></p>
+        </td>
+        <td style="width:33%;">
+            <br />
+<pre>
+modal.text('Lorem Ipsum is samet dolor',{
+    title:'Lorem Ipsum',
+    width:'150px'
+});
+</pre>
+            <p align="center"><a href="javascript:void(0);" onclick="javascript:modal.text('Lorem Ipsum is samet dolor',{title:'Lorem Ipsum',width:'150px'});">Clique aqui</a></p>
+                            
+                     
+
+        </td>
+                    
+    </tr>
+</table>
+
+
+<hr />
+
+
+
+<h2>modal.wait</h2>
+
+<p>Permite criar um modal para cenários onde precisa esperar a resposta de requisições.<br />Não há como fechar o modal, enquanto não houver resposta da requisição.</p>  
+<pre>
+modal.message('Por favor, aguarde...');
+
+// [requisição]
+// ...
+
+// [resposta da requisição]
+modal.close();
+</pre>
+<p align="center"><a href="javascript:void(0);" onclick="javascript:test_modal_wait();">Clique aqui</a></p>
+
+<hr /><h2>modal.iframe</h2>
+
+<p>Permite criar um iframe com url embarcado.</p> 
+<table>
+    <tr>
+        <td style="width:50%;"> 
+<pre>
+modal.iframe('lorem-ipsum.html');
+</pre>
+<p align="center"><a href="javascript:void(0);" onclick="javascript:modal.iframe('lorem-ipsum.html');">Clique aqui</a></p>
+</td>
+<td style="width:auto">
+<pre>
+modal.iframe('lorem-ipsum.html',{
+    title:'Lorem Ipsum'
+});
+</pre>
+        <p align="center"><a href="javascript:void(0);" onclick="javascript:modal.iframe('lorem-ipsum.html',{
+            title:'Lorem Ipsum'
+        });">Clique aqui</a></p>
+        
+</td>
+    </tr>
+</table>
+<hr />
+<h2>modal.alert</h2>
+
+<p>Permite criar um modal com botão centralizado.</p> 
+
+<table>
+    <tr>
+        <td style="width:33%;">
+          
+<pre>
+modal.alert('Isso é um alerta');
+</pre>
+            <p align="center"><a href="javascript:void(0);" onclick="javascript:modal.alert('Isso é um alerta');">Clique aqui</a></p>
+                   
+
+        </td>
+        <td style="width:auto;">
+<pre>
+modal.alert('Isso é um alerta',{
+    title:'Alerta geral'
+});
+</pre>
+<p align="center"><a href="javascript:void(0);" onclick="javascript:modal.alert('Isso é um alerta',{
+    title:'Alerta geral'
+});">Clique aqui</a></p>
+        </td>
+        <td style="width:33%;">
+<pre>
+modal.alert('Isso é um &lt;strong&gt;alerta&lt;/strong&gt;;',{
+    title:'Alerta geral',
+    button:'Entendi',
+    width:'250px'
+});
+</pre>
+            <p align="center"><a href="javascript:void(0);" onclick="javascript:modal.alert('Isso é um <strong>alerta</strong>',{
+                title:'Alerta geral',
+                button:'Entendi',
+    width:'250px'
+            });">Clique aqui</a></p>
+                            
+                     
+
+        </td>
+                    
+    </tr>
+</table>
+<h2>modal.confirm</h2>
+
+<p>Permite criar um modal com botões de OK/cancelar.</p> 
+
+<table>
+    <tr>
+        <td style="width:33%;">
+          
+<pre>
+modal.confirm('Deseja abrir o arquivo?',{
+    callback:'abrirArquivo()'
+});
+
+function abrirArquivo()
+{
+    alert('Não foi possível abrir o arquivo');
+}
+</pre>
+            <p align="center"><a href="javascript:void(0);" onclick="javascript:modal.confirm('Deseja abrir o arquivo?',{
+                callback:'abrirArquivo()'
+            });">Clique aqui</a></p>
+
+        </td>
+        <td style="width:auto;">
+<pre>
+modal.confirm('Deseja abrir o arquivo?',{
+    title:'Abrir arquivo',
+    callback:'abrirArquivo()'
+});
+</pre>
+<p align="center"><a href="javascript:void(0);" onclick="javascript:modal.confirm('Deseja abrir o arquivo?',{
+    title:'Salvar arquivo',
+    callback:'abrirArquivo()'
+});">Clique aqui</a></p>
+        </td>
+        <td style="width:33%;">
+<pre>
+modal.confirm('Deseja abrir o arquivo?',{
+    title:'Abrir arquivo',
+    callback:'abrirArquivo()',
+    button:[{
+        ok:'Abrir',
+        cancel:'Deixar pra depois'
+        }]
+});
+</pre>
+            <p align="center"><a href="javascript:void(0);" onclick="javascript:modal.confirm('Deseja abrir o arquivo?',{
+                title:'Abrir arquivo',
+                callback:'abrirArquivo()',
+                button:{
+                    ok:'Abrir',
+                    cancel:'Deixar pra depois'
+                    }
+            });">Clique aqui</a></p>
+                            
+                     
+
+        </td>
+                    
+    </tr>
+</table>
+
+
+<hr />
+<h2>modal.prompt</h2>
+<p>Permite criar um modal semelhante ao javascript:prompt</p> 
+
+<table>
+    <tr>
+        <td style="width:33%;">
+          
+<pre>
+
+modal.prompt('Digite o seu email:',{
+    callback:'lostPassword()'
+});
+
+
+function lostPassword(email)
+{
+    alert('A senha foi enviada ao e-mail '+email);
+}
+</pre>
+            <p align="center"><a href="javascript:void(0);" onclick="javascript:modal.prompt('Digite o seu email:',{
+                callback:'lostPassword()'
+            });">Clique aqui</a></p>
+
+        </td>
+        <td style="width:auto;">
+<pre>
+modal.prompt('Digite o seu email:',{
+    title:'Esqueci a senha',
+    callback:'lostPassword()'
+});
+</pre>
+<p align="center"><a href="javascript:void(0);" onclick="javascript:modal.prompt('Digite o seu email:',{
+    title:'Esqueci a senha',
+    callback:'lostPassword()'
+});">Clique aqui</a></p>
+        </td>
+        <td style="width:33%;">
+<pre>
+modal.prompt('Digite o seu email:',{
+    title:'Esqueci a senha',
+    callback:'lostPassword()',
+    width:'250px'
+});
+</pre>
+            <p align="center"><a href="javascript:void(0);" onclick="javascript: modal.prompt('Digite o seu email:',{
+                title:'Esqueci a senha',
+                callback:'lostPassword()',
+                width:'250px'
+            });">Clique aqui</a></p>
+                            
+                     
+
+        </td>
+                    
+    </tr>
+</table>
+
+<hr />
+
+<h2>Eventos</h2>  
+<pre>
+modal.message('Lorem Ipsum samet dolor',{
+    title:'Lorem Ipsum',
+    button: [{
+		label: 'Botão ABC',
+		callback: "alert('Você clicou no botão ABC')"
+	}, {
+		label: 'Botão DEF',
+		callback: "alert('Você clicou no botão DEF')"
+	}, {
+		label: 'Botão XYZ',
+		callback: "xyz()"
+	}]
+});
+
+function xyz()
+{
+    alert('Você clicou no botão XYZ');
+}
+
+</pre>
+<p align="center"><a href="javascript:void(0);" onclick="javascript:test_modal_2buttons();">Clique aqui</a></p>
+<hr />
+
+
+<script type="text/javascript">
+var modal = new Modal();
+
+
+function test_modal_wait(){
+   parent.modal.wait('Por favor aguarde...<br /><br />Esta mensagem irá fechar em 5 segundos');
+   window.setTimeout(function(){parent.modal.close();},5000);
+}
+
+function test_modal_2buttons()
+{
+    parent.modal.text('Lorem Ipsum samet dolor',{
+    title:'Lorem Ipsum',
+    button: [{
+		label: 'Botão ABC',
+		callback: "alert('Você clicou no botão ABC')"
+	}, {
+		label: 'Botão DEF',
+		callback: "alert('Você clicou no botão DEF')"
+	}, {
+		label: 'Botão ZYZ',
+		callback: "xyz()"
+	}]});
+}
+
+function xyz(){alert('Você clicou no botão XYZ')}
+
+function abrirArquivo()
+{
+    alert('Não foi possível abrir o arquivo');
+}
+
+
+function lostPassword(email)
+{
+    alert('A senha foi enviada ao e-mail '+email);
+}
+
+function Modal(args)
+{
+   
+    var overlay=document.createElement('div');
+    overlay.setAttribute('id','modal-overlay');
+    var body = document.body;
+    body.appendChild(overlay);
+    document.getElementById('modal-overlay').innerHTML='<div id="modal"></div>';
+    
+    this.text = function(message,args){
+        document.getElementById('modal').style.width=this._getWidth(args);
+        document.getElementById('modal').innerHTML='<span onclick="javascript:modal.close()"; id="modal-close">&times;</span><span id="modal_title"></span><div id="modal-content">null</div>';
+        document.getElementById('modal_title').innerHTML= this._getTitle(args);
+        document.getElementById('modal-content').innerHTML=message+this._getButton(args);
+        document.getElementById('modal-overlay').style.display='block';     
+    }
+
+    this.wait = function(message,args){
+        document.getElementById('modal').style.width=this._getWidth(args);
+        document.getElementById('modal').innerHTML='<img src="ajax-loader.gif" style="float:right;"/><span id="modal_title"></span><div id="modal-content">null</div>';
+        document.getElementById('modal_title').innerHTML= this._getTitle(args);
+        document.getElementById('modal-content').innerHTML=message;
+        document.getElementById('modal-overlay').style.display='block';
+    };
+
+   
+
+    this.close = function()
+    {
+        document.getElementById('modal').innerHTML='';
+        document.getElementById('modal-overlay').style.display='none';   
+    }
+
+    this.iframe = function(address,args)
+    {
+        document.getElementById('modal').style.width=this._getWidth(args);
+        document.getElementById('modal').innerHTML='<span onclick="javascript:modal.close()"; id="modal-close">&times;</span><span id="modal_title"></span><div id="modal-content">null</div>'; 
+        document.getElementById('modal_title').innerHTML= this._getTitle(args);
+        document.getElementById('modal-content').innerHTML='<iframe src="'+address+'" id="modal_iframe"></iframe>';
+        document.getElementById('modal_iframe').style.height=window.innerHeight-300+'px';
+        
+        document.getElementById('modal-overlay').style.display='block'; 
+
+    }
+
+    this.alert = function(message,args)
+    {
+        document.getElementById('modal').style.width=this._getWidth(args);
+        document.getElementById('modal').innerHTML='<span onclick="javascript:modal.close()"; id="modal-close">&times;</span><span id="modal_title"></span><div id="modal-content">null</div>'; 
+        document.getElementById('modal_title').innerHTML= this._getTitle(args);
+
+        if(args!=undefined)
+        {    
+            if(args.button!=undefined)
+                args.button = [{label:args.button}];
+            else
+                args.button = [{label:'OK'}];
+        }
+        else if(args==undefined)
+            args = {button:[{label:'OK'}]};
+
+        document.getElementById('modal-content').innerHTML=message+this._getButton(args);
+        document.getElementById('modal-overlay').style.display='block'; 
+    }
+
+
+    this.confirm = function(message,args)
+    {
+        document.getElementById('modal').style.width=this._getWidth(args);
+        document.getElementById('modal').innerHTML='<span onclick="javascript:modal.close()"; id="modal-close">&times;</span><span id="modal_title"></span><div id="modal-content">null</div>'; 
+        document.getElementById('modal_title').innerHTML= this._getTitle(args);
+
+        if(args==undefined)
+        {
+            alert('modal.confirm = argumento callback nao parametrizado');
+            return;
+        }
+        
+        if(args.button!=undefined)
+            args.button = [{label:args.button.ok,callback:args.callback},{label:args.button.cancel}];
+        
+        else
+            args.button = [{label:'OK',callback:args.callback},{label:'Cancelar'}];
+        
+       
+
+        document.getElementById('modal-content').innerHTML=message+this._getButton(args);
+        document.getElementById('modal-overlay').style.display='block'; 
+    }
+
+    this.prompt = function(message,args)
+    {
+        if(args==undefined)
+        {
+            alert('modal.prompt = argumentos nao parametrizados');
+            return;
+        }
+       
+        else if(args.callback==undefined)
+        {
+            alert('modal.field = argumento callback nao parametrizado');
+            return;
+        }
+
+        var form = '<br /><input type="text" id="modal-prompt-input"  style="width:80%;"/>';
+        args.callback = args.callback.replace('()','(document.getElementById(\'modal-prompt-input\').value)')
+        this.confirm(message+form,args);
+        document.getElementById('modal-prompt-input').focus();
+    }
+
+    
+
+    this._getTitle = function(args){
+       
+       
+        if(args!=undefined)
+        
+            return (args.title!=undefined ? args.title+'<br /><br />' : '');
+        else
+            return '';
+    }
+
+    this._getWidth = function(args){
+        if(args!=undefined)
+            return (args.width!=undefined ? args.width : '50%');
+        return '50%';
+    }
+
+    this._getButton = function(args){
+        if(args==undefined) return '';
+        if(args.button==undefined) return '';
+        
+        var ret='<p class="modal-button">';
+
+        for(i=0;i<args.button.length;i++)
+        {
+            ret+='<input type="button" value="'+args.button[i].label+'" onclick="javascript:'+(args.button[i].callback!=undefined ? args.button[i].callback+';' : '')+'modal.close();" />';
+
+        }
+
+        return ret;
+
+    }
+    
+
+}
+
+</script>
+
+    
+</body>
+</html>

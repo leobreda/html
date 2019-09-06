@@ -1,0 +1,9 @@
+*{margin:0px;padding:0px;}
+body{width:80%;margin:20px auto;font-size:12px;font-family:Verdana}
+pre{margin:10px 10px 10px 0px;padding:10px;background: rgba(0,255,0,0.2);}
+hr{margin:20px 0px;}
+
+table{width:100%;border:0px;}
+table td{padding:10px 10px 10px 0px;vertical-align:top;}
+
+table td:last-child{padding:10px 0px 10px 0px;}
