@@ -14,7 +14,8 @@
 
 
 <h1>Modal</h1>
-Lorem ipsum samet dolor
+<p>CSS: <a href="https://github.com/leobreda/html/blob/master/modal/modal.css" target="_blank">https://github.com/leobreda/html/blob/master/modal/modal.css</a></p>
+<p>Javascript: <a href="https://github.com/leobreda/html/blob/master/modal/modal.js" target="_blank">https://github.com/leobreda/html/blob/master/modal/modal.js</a></p>
 <hr />
 <h2>modal.text</h2>
 
@@ -42,9 +43,7 @@ modal.text('Aqui vai um texto com código &lt;strong&gt;html&lt;/strong&gt;');
 </table>
 <hr />
 
-
 <h2>Argumentos</h2>
-
 <table>
     <tr>
         <td style="width:33%;">
@@ -297,7 +296,7 @@ modal.prompt('Digite o seu email:',{
 
 <hr />
 
-<h2>Eventos</h2>  
+<h2>Botões customizados</h2>  
 <pre>
 modal.message('Lorem Ipsum samet dolor',{
     title:'Lorem Ipsum',
@@ -361,152 +360,6 @@ function lostPassword(email)
     alert('A senha foi enviada ao e-mail '+email);
 }
 
-function Modal(args)
-{
-   
-    var overlay=document.createElement('div');
-    overlay.setAttribute('id','modal-overlay');
-    var body = document.body;
-    body.appendChild(overlay);
-    document.getElementById('modal-overlay').innerHTML='<div id="modal"></div>';
-    
-    this.text = function(message,args){
-        document.getElementById('modal').style.width=this._getWidth(args);
-        document.getElementById('modal').innerHTML='<span onclick="javascript:modal.close()"; id="modal-close">&times;</span><span id="modal_title"></span><div id="modal-content">null</div>';
-        document.getElementById('modal_title').innerHTML= this._getTitle(args);
-        document.getElementById('modal-content').innerHTML=message+this._getButton(args);
-        document.getElementById('modal-overlay').style.display='block';     
-    }
-
-    this.wait = function(message,args){
-        document.getElementById('modal').style.width=this._getWidth(args);
-        document.getElementById('modal').innerHTML='<img src="ajax-loader.gif" style="float:right;"/><span id="modal_title"></span><div id="modal-content">null</div>';
-        document.getElementById('modal_title').innerHTML= this._getTitle(args);
-        document.getElementById('modal-content').innerHTML=message;
-        document.getElementById('modal-overlay').style.display='block';
-    };
-
-   
-
-    this.close = function()
-    {
-        document.getElementById('modal').innerHTML='';
-        document.getElementById('modal-overlay').style.display='none';   
-    }
-
-    this.iframe = function(address,args)
-    {
-        document.getElementById('modal').style.width=this._getWidth(args);
-        document.getElementById('modal').innerHTML='<span onclick="javascript:modal.close()"; id="modal-close">&times;</span><span id="modal_title"></span><div id="modal-content">null</div>'; 
-        document.getElementById('modal_title').innerHTML= this._getTitle(args);
-        document.getElementById('modal-content').innerHTML='<iframe src="'+address+'" id="modal_iframe"></iframe>';
-        document.getElementById('modal_iframe').style.height=window.innerHeight-300+'px';
-        
-        document.getElementById('modal-overlay').style.display='block'; 
-
-    }
-
-    this.alert = function(message,args)
-    {
-        document.getElementById('modal').style.width=this._getWidth(args);
-        document.getElementById('modal').innerHTML='<span onclick="javascript:modal.close()"; id="modal-close">&times;</span><span id="modal_title"></span><div id="modal-content">null</div>'; 
-        document.getElementById('modal_title').innerHTML= this._getTitle(args);
-
-        if(args!=undefined)
-        {    
-            if(args.button!=undefined)
-                args.button = [{label:args.button}];
-            else
-                args.button = [{label:'OK'}];
-        }
-        else if(args==undefined)
-            args = {button:[{label:'OK'}]};
-
-        document.getElementById('modal-content').innerHTML=message+this._getButton(args);
-        document.getElementById('modal-overlay').style.display='block'; 
-    }
-
-
-    this.confirm = function(message,args)
-    {
-        document.getElementById('modal').style.width=this._getWidth(args);
-        document.getElementById('modal').innerHTML='<span onclick="javascript:modal.close()"; id="modal-close">&times;</span><span id="modal_title"></span><div id="modal-content">null</div>'; 
-        document.getElementById('modal_title').innerHTML= this._getTitle(args);
-
-        if(args==undefined)
-        {
-            alert('modal.confirm = argumento callback nao parametrizado');
-            return;
-        }
-        
-        if(args.button!=undefined)
-            args.button = [{label:args.button.ok,callback:args.callback},{label:args.button.cancel}];
-        
-        else
-            args.button = [{label:'OK',callback:args.callback},{label:'Cancelar'}];
-        
-       
-
-        document.getElementById('modal-content').innerHTML=message+this._getButton(args);
-        document.getElementById('modal-overlay').style.display='block'; 
-    }
-
-    this.prompt = function(message,args)
-    {
-        if(args==undefined)
-        {
-            alert('modal.prompt = argumentos nao parametrizados');
-            return;
-        }
-       
-        else if(args.callback==undefined)
-        {
-            alert('modal.field = argumento callback nao parametrizado');
-            return;
-        }
-
-        var form = '<br /><input type="text" id="modal-prompt-input"  style="width:80%;"/>';
-        args.callback = args.callback.replace('()','(document.getElementById(\'modal-prompt-input\').value)')
-        this.confirm(message+form,args);
-        document.getElementById('modal-prompt-input').focus();
-    }
-
-    
-
-    this._getTitle = function(args){
-       
-       
-        if(args!=undefined)
-        
-            return (args.title!=undefined ? args.title+'<br /><br />' : '');
-        else
-            return '';
-    }
-
-    this._getWidth = function(args){
-        if(args!=undefined)
-            return (args.width!=undefined ? args.width : '50%');
-        return '50%';
-    }
-
-    this._getButton = function(args){
-        if(args==undefined) return '';
-        if(args.button==undefined) return '';
-        
-        var ret='<p class="modal-button">';
-
-        for(i=0;i<args.button.length;i++)
-        {
-            ret+='<input type="button" value="'+args.button[i].label+'" onclick="javascript:'+(args.button[i].callback!=undefined ? args.button[i].callback+';' : '')+'modal.close();" />';
-
-        }
-
-        return ret;
-
-    }
-    
-
-}
 
 </script>
 
