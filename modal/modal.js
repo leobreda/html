@@ -8,17 +8,17 @@ function Modal(args)
     document.getElementById('modal-overlay').innerHTML='<div id="modal"></div>';
     
     this.text = function(message,args){
-        document.getElementById('modal').style.width=this._getWidth(args);
+        this._setWidth(args);
         document.getElementById('modal').innerHTML='<span onclick="javascript:modal.close()"; id="modal-close">&times;</span><span id="modal_title"></span><div id="modal-content">null</div>';
-        document.getElementById('modal_title').innerHTML= this._getTitle(args);
+        this._setTitle(args);
         document.getElementById('modal-content').innerHTML=message+this._getButton(args);
-        document.getElementById('modal-overlay').style.display='block';     
+        document.getElementById('modal-overlay').style.display='block';  
     }
 
     this.wait = function(message,args){
-        document.getElementById('modal').style.width=this._getWidth(args);
+        this._setWidth(args);
         document.getElementById('modal').innerHTML='<img src="ajax-loader.gif" style="float:right;"/><span id="modal_title"></span><div id="modal-content">null</div>';
-        document.getElementById('modal_title').innerHTML= this._getTitle(args);
+        this._setTitle(args);
         document.getElementById('modal-content').innerHTML=message;
         document.getElementById('modal-overlay').style.display='block';
     };
@@ -33,9 +33,9 @@ function Modal(args)
 
     this.iframe = function(address,args)
     {
-        document.getElementById('modal').style.width=this._getWidth(args);
+        this._setWidth(args);
         document.getElementById('modal').innerHTML='<span onclick="javascript:modal.close()"; id="modal-close">&times;</span><span id="modal_title"></span><div id="modal-content">null</div>'; 
-        document.getElementById('modal_title').innerHTML= this._getTitle(args);
+        this._setTitle(args);
         document.getElementById('modal-content').innerHTML='<iframe src="'+address+'" id="modal_iframe"></iframe>';
         document.getElementById('modal_iframe').style.height=window.innerHeight-300+'px';
         
@@ -45,9 +45,9 @@ function Modal(args)
 
     this.alert = function(message,args)
     {
-        document.getElementById('modal').style.width=this._getWidth(args);
+        this._setWidth(args);
         document.getElementById('modal').innerHTML='<span onclick="javascript:modal.close()"; id="modal-close">&times;</span><span id="modal_title"></span><div id="modal-content">null</div>'; 
-        document.getElementById('modal_title').innerHTML= this._getTitle(args);
+        this._setTitle(args);
 
         if(args!=undefined)
         {    
@@ -66,9 +66,9 @@ function Modal(args)
 
     this.confirm = function(message,args)
     {
-        document.getElementById('modal').style.width=this._getWidth(args);
+        this._setWidth(args);
         document.getElementById('modal').innerHTML='<span onclick="javascript:modal.close()"; id="modal-close">&times;</span><span id="modal_title"></span><div id="modal-content">null</div>'; 
-        document.getElementById('modal_title').innerHTML= this._getTitle(args);
+        this._setTitle(args);
 
         if(args==undefined)
         {
@@ -78,12 +78,9 @@ function Modal(args)
         
         if(args.button!=undefined)
             args.button = [{label:args.button.ok,callback:args.callback},{label:args.button.cancel}];
-        
         else
             args.button = [{label:'OK',callback:args.callback},{label:'Cancelar'}];
         
-       
-
         document.getElementById('modal-content').innerHTML=message+this._getButton(args);
         document.getElementById('modal-overlay').style.display='block'; 
     }
@@ -110,20 +107,18 @@ function Modal(args)
 
     
 
-    this._getTitle = function(args){
-       
-       
-        if(args!=undefined)
-        
-            return (args.title!=undefined ? args.title+'<br /><br />' : '');
+    this._setTitle = function(args){
+        if(args!=undefined)  
+            document.getElementById('modal_title').innerHTML=  (args.title!=undefined ? args.title+'<br /><br />' : '');
         else
-            return '';
+            document.getElementById('modal_title').innerHTML ='';
     }
 
-    this._getWidth = function(args){
+    this._setWidth = function(args){
         if(args!=undefined)
-            return (args.width!=undefined ? args.width : '50%');
-        return '50%';
+            document.getElementById('modal').style.width =  (args.width!=undefined ? args.width : '50%');
+        else
+            document.getElementById('modal').style.width ='50%';
     }
 
     this._getButton = function(args){
@@ -134,13 +129,15 @@ function Modal(args)
 
         for(i=0;i<args.button.length;i++)
         {
-            ret+='<input type="button" value="'+args.button[i].label+'" onclick="javascript:'+(args.button[i].callback!=undefined ? args.button[i].callback+';' : '')+'modal.close();" />';
+            ret+='<input type="button" \
+                    value="'+args.button[i].label+'"'
+                    + (args.button[i].style!=undefined ? 'style="'+args.button[i].style+'"' : '')
+                    + (args.button[i].class!=undefined ? 'class="'+args.button[i].class+'"' : '')
+                    + ' onclick="javascript:'+(args.button[i].callback!=undefined ? args.button[i].callback+';' : '')
+                    +'modal.close();" />';
 
         }
-
+        ret+="</p>"
         return ret;
-
     }
-    
-
 }

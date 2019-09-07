@@ -15,6 +15,7 @@
 
 
 <h1>Modal</h1>
+<p> GIT here! <a href="https://github.com/leobreda/html/tree/master/modal" target="_blank">https://github.com/leobreda/html/tree/master/modal</a></p>
 <p>CSS: <a href="https://github.com/leobreda/html/blob/master/modal/modal.css" target="_blank">https://github.com/leobreda/html/blob/master/modal/modal.css</a></p>
 <p>Javascript: <a href="https://github.com/leobreda/html/blob/master/modal/modal.js" target="_blank">https://github.com/leobreda/html/blob/master/modal/modal.js</a></p>
 <hr />
@@ -296,30 +297,37 @@ modal.prompt('Digite o seu email:',{
 </table>
 
 <hr />
-
-<h2>Botões customizados</h2>  
+<h2>Botões customizados</h2>
+        
 <pre>
-modal.message('Lorem Ipsum samet dolor',{
+&ltstyle&gt;
+    .superbotao{line-height:30px;font-weight:bold;border:2px solid #990000 !important;}
+&lt;/style&gt;
+</pre>
+<pre>
+modal.text('Lorem Ipsum samet dolor',{
     title:'Lorem Ipsum',
     button: [{
-		label: 'Botão ABC',
-		callback: "alert('Você clicou no botão ABC')"
-	}, {
-		label: 'Botão DEF',
-		callback: "alert('Você clicou no botão DEF')"
-	}, {
-		label: 'Botão XYZ',
-		callback: "xyz()"
-	}]
+        label: 'Botão ABC',
+        callback: "alert('Você clicou no botão ABC')"
+    }, {
+        label: 'Botão DEF',
+        style:'color:#00ff00;background:#990000',
+        callback: "alert('Você clicou no botão DEF')"
+    }, {
+        label: 'Botão XYZ',
+        class:'superbotao',
+        callback: "xyz()"
+    }]
 });
 
 function xyz()
 {
     alert('Você clicou no botão XYZ');
 }
-
 </pre>
 <p align="center"><a href="javascript:void(0);" onclick="javascript:test_modal_2buttons();">Clique aqui</a></p>
+
 <hr />
 
 
@@ -341,12 +349,15 @@ function test_modal_2buttons()
 		callback: "alert('Você clicou no botão ABC')"
 	}, {
 		label: 'Botão DEF',
+        style:'color:#00ff00;background:#990000',
 		callback: "alert('Você clicou no botão DEF')"
 	}, {
-		label: 'Botão ZYZ',
-		callback: "xyz()"
+		label: 'Botão XYZ',
+        class:'superbotao',
+        callback: "xyz()"
 	}]});
 }
+
 
 function xyz(){alert('Você clicou no botão XYZ')}
 

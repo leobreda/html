@@ -8,3 +8,5 @@ table{width:100%;border:0px;}
 table td{padding:10px 10px 10px 0px;vertical-align:top;}
 
 table td:last-child{padding:10px 0px 10px 0px;}
+
+.superbotao{line-height:30px;font-weight:bold;border:2px solid #990000 !important;}
