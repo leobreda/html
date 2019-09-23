@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Treeview</title>
+    <script type="text/javascript" src="treeview.js"></script>
+    <link rel="stylesheet" type="text/css" href="treeview.css" />
+</head>
+<body>
+    <h1>Treeview</h1>
+    <p>Organização e visualização de informações organizadas em forma de árvore</p>
+    
+<hr />
+<br /><br />
+
+
+<hr />
+
+
+<table style="width:100%">
+    <tr>
+        <td style="width:48%;">
+                <h3>Inicialização</h3>
+
+<pre>
+&lt;script type="text/javascript" src="treeview.js">&lt;/script&gt;
+&lt;link rel="stylesheet" type="text/css" href="treeview.css" /&gt;
+
+&lt;ul id="treeview" class="treeview"&gt;
+&lt;/ul&gt;
+</pre>
+
+<h3>Script</h3>
+<pre>
+&lt;script&gt;  
+    var arvore = [{
+        label:"0",
+            tree:[{label:"00"}]},
+                {
+        label:"1",
+            tree:[{label:"12",
+                tree:[{label:"123",
+                    tree:[{label:"1234"}]}]},
+            {label:"34",
+                tree:[{label:"345",
+                    tree:[{label:"3456"}]}]}]}] ;
+
+    var treeview = new Treeview('treeview');
+    treeview.json = arvore;
+    treeview.renderize();
+
+&lt;/script&gt;  
+</pre>
+</td>
+        <td style="width:auto;padding-left:4%">
+                <h3>Opcionais</h3> 
+
+<pre>
+&lt;input type="text" id="treeview-breadcrumb" /&gt;
+</pre>
+#treeview-breadcrumb: <input type="text" id="treeviewA-breadcrumb" style="width:200px" />
+                <h3>Resultado</h3>
+                <ul id="treeviewA" class="treeview" style="max-height:200px;;overflow:auto;padding:10px;border:1px solid #999999;">
+
+                    </ul>
+
+                    
+            </td>
+    </tr>
+</table>
+<script>
+    var arvoreA = [{
+    label:"0",
+        tree:[{label:"00"}]},
+            {
+    label:"1",
+        tree:[{label:"12",tree:[
+            {label:"123",tree:[{label:"1234"}]}]},
+            {label:"34",tree:[{label:"345",tree:[{label:"3456"}]}]}]}] ;
+var treeviewA = new Treeview('treeviewA');
+treeviewA.json = arvoreA;
+treeviewA.renderize();
+    </script>
+<hr />
+<table style="width:100%">
+        <tr>
+            <td style="width:30%;">
+                    <ul id="treeviewContinente" class="treeview" style="height:300px;width:100%;overflow:auto;padding:10px;border:1px solid #999999;">
+
+                        </ul>
+            </td>
+            <td style="width:auto;padding-left:5%;">
+<pre style="width:600px;overflow-x:scroll;">
+var arvore = [{
+    label:"América do Norte",
+        tree:[{label:"Estados Unidos",tree:[
+            {label:"Arizona",tree:[{label:"Glendale"},{label:"Marana"},{label:"Peoria"},{label:"Tempe"}]},
+            {label:"Iowa",tree:[{label:"Davenport"},{label:"Des Moines"},{label:"Fort Dodge"},{label:"Waterloo"}]},
+            {label:"Texas",tree:[{label:"Abilene"},{label:"Austin"},{label:"Dallas"},{label:"Del Rio"}]},
+            {label:"Nova Iorque",tree:[{label:"Albany"},{label:"Manhattan"},{label:"Oneonta"},{label:"Utica"}]}]},
+    {label:"Canadá"}]},
+    {label:"América do Sul",
+        tree:[{label:"Brasil",
+            tree:[{label:"Minas Gerais",tree:[{label:"Belo Horizonte"},{label:"Nova Lima"},{label:"Uberlândia"},{label:"Três Corações"}]},
+                {label:"Santa Catarina",tree:[{label:"Chapecó"},{label:"Florianópolis"},{label:"Joaçaba"},{label:"Joinville"}]},
+                {label:"São Paulo",tree:[{label:"São Paulo"},{label:"Campinas"},{label:"Santos"}]}]},
+        {label:"Argentina",tree:[{label:"Buenos Aires"},{label:"Chaco"},{label:"Formosa"},{label:"Mendoza"}]}]}];
+
+var treeview = new Treeview('treeview');
+treeview.json = arvore;
+treeview.renderize();
+</pre>
+         
+            </td>
+        </tr>
+       
+    </table>
+<script>var arvoreContinente = [{
+        label:"América do Norte",
+            tree:[{label:"Estados Unidos",tree:[
+                {label:"Arizona",tree:[{label:"Glendale"},{label:"Marana"},{label:"Peoria"},{label:"Tempe"}]},
+                {label:"Iowa",tree:[{label:"Davenport"},{label:"Des Moines"},{label:"Fort Dodge"},{label:"Waterloo"}]},
+                {label:"Texas",tree:[{label:"Abilene"},{label:"Austin"},{label:"Dallas"},{label:"Del Rio"}]},
+                {label:"Nova Iorque",tree:[{label:"Albany"},{label:"Manhattan"},{label:"Oneonta"},{label:"Utica"}]}]},
+        {label:"Canadá"}]},
+        {label:"América do Sul",
+            tree:[{label:"Brasil",
+                tree:[{label:"Minas Gerais",tree:[{label:"Belo Horizonte"},{label:"Nova Lima"},{label:"Uberlândia"},{label:"Três Corações"}]},
+                {label:"Santa Catarina",tree:[{label:"Chapecó"},{label:"Florianópolis"},{label:"Joaçaba"},{label:"Joinville"}]},
+                {label:"São Paulo",tree:[{label:"São Paulo"},{label:"Campinas"},{label:"Santos"}]}]},
+        {label:"Argentina",tree:[{label:"Buenos Aires"},{label:"Chaco"},{label:"Formosa"},{label:"Mendoza"}]}]}];
+    
+    var treeviewContinente = new Treeview('treeviewContinente');
+    treeviewContinente.json = arvoreContinente;
+    treeviewContinente.renderize(); </script>
+
+
+
+
+<h2>Folha de estilo</h2>
+
+
+<table style="width:100%">
+        <tr>
+            <td style="width:30%;">
+                    <ul id="treeviewB" class="treeview" style="height:170px;width:100%;overflow:auto;padding:10px;border:1px solid #999999;">
+
+                        </ul>
+            </td>
+            <td style="width:auto;padding-left:50px;">
+<pre>
+var arvore = [{
+    label:"Pasta A",
+        tree:[{label:"Arquivo A",
+        <span style="background:#ffff00;">style:"font-family:Comic Sans MS;color:#000099"},</span>
+        {label:"Arquivo B",
+        <span style="background:#ffff00;"> class:"disabled"},</span>
+        {label:"Arquivo C"}]}] ;
+
+var treeview = new Treeview('treeview');
+treeview.json = arvore;
+treeview.renderize();
+</pre>
+                
+            </td>
+        </tr>
+       
+    </table>
+<script>var arvoreB = [{
+        label:"Pasta A",
+            tree:[{label:"Arquivo A",
+            style:"font-family:Comic Sans MS;color:#000099"},
+            {label:"Arquivo B",
+            class:"disabled"},
+            {label:"Arquivo C"}]}] ;
+    var treeviewB = new Treeview('treeviewB');
+    treeviewB.json = arvoreB;
+    treeviewB.renderize();</script>
+
+
+<h2>Eventos javascript</h2>
+<p>onclick()</p>
+<table style="width:100%">
+    <tr>
+        <td style="width:30%;">
+                <ul id="treeviewC" class="treeview" style="height:170px;width:100%;overflow:auto;padding:10px;border:1px solid #999999;">
+                </ul>
+        </td>
+        <td style="width:auto;padding-left:50px;">
+<pre>
+var arvore = [{
+    label:"Pasta A",
+        tree:[{label:"Arquivo A",
+        <span style="background:#ffff00;">onclick:"alert('Você clicou no Arquivo A');"},</span>
+        {label:"Arquivo B",
+        <span style="background:#ffff00;">onclick:"clickArquivo();"},</span>
+        {label:"Arquivo C"}]}] ;
+
+var treeview = new Treeview('treeview');
+treeview.json = arvore;
+treeview.renderize();
+
+function clickArquivo()
+{
+    alert('Você acionou uma função Javascript');
+}
+</pre>
+            
+        </td>
+    </tr>
+    
+</table>
+<script>
+var arvoreC = [{
+    label:"Pasta A",
+        tree:[{label:"Arquivo A",
+        onclick:"alert('Você clicou no Arquivo A');"},
+        {label:"Arquivo B",
+        onclick:"clickArquivo();"},
+        {label:"Arquivo C"}]}] ;
+var treeviewC = new Treeview('treeviewC');
+treeviewC.json = arvoreC;
+treeviewC.renderize();
+
+function clickArquivo()
+{
+    alert('Você acionou uma função Javascript');
+}
+</script>   
+    
+<br />
+<p>Criando pastas e arquivos dinamicamente</p>
+    <table style="width:100%">
+        <tr>
+            <td style="width:30%;">
+                    <ul id="treeviewD" class="treeview" style="height:215px;width:100%;overflow:auto;padding:10px;border:1px solid #999999;">
+                    </ul>
+            </td>
+            <td style="width:auto;padding-left:50px;">
+    <pre>
+var arvore = [{
+    label:"Pasta A",tree:[]}] ;
+
+<span style="background:#ffff00;">for(i=0;i&lt;10;i++)</span>
+    arvore[0].tree.<span style="background:#ffff00;">push</span>({label:"Arquivo "+i});
+
+var arquivos = arvore[0].tree;
+
+<span style="background:#ffff00;">for(i=66;i&lt;71;i++)</span>
+    arvore.<span style="background:#ffff00;">push</span>({label:"Pasta "+String.fromCharCode(i),tree:arquivos});
+
+var treeview = new Treeview('treeview');
+treeview.json = arvore;
+treeview.renderize();
+</pre>
+                
+            </td>
+        </tr>
+        
+    </table>
+    <script>
+    var arvoreD = [{
+        label:"Pasta A",tree:[]}] ;
+
+    for(i=0;i<10;i++)
+       arvoreD[0].tree.push({label:"Arquivo "+i});
+
+    var arquivos =  arvoreD[0].tree;
+
+    for(i=66;i<71;i++)
+        arvoreD.push({label:"Pasta "+String.fromCharCode(i),tree:arquivos});
+
+    var treeviewD = new Treeview('treeviewD');
+    treeviewD.json = arvoreD;
+    treeviewD.renderize();
+    
+    
+    </script>    
+<br />
+<p>Carregando pastas e arquivos de forma assíncrona</p>
+
+
+
+<table style="width:100%">
+        <tr>
+            <td style="width:30%;">
+                    <ul id="treeviewE" class="treeview" style="height:215px;width:100%;overflow:auto;padding:10px;border:1px solid #999999;">
+                    </ul>
+            </td>
+            <td style="width:auto;padding-left:50px;">
+    <pre>
+var arvore = [
+    {label:"Brasil",<span style="background:#ffff00;">tree: "carregarPais('Brasil')"</span>},
+    {label:"Argentina",<span style="background:#ffff00;">tree: "carregarPais('Argentina')"</span>}];
+
+
+var treeview = new Treeview('treeview');
+treeview.json = arvore;
+treeview.renderize();
+    
+function carregarPais(pasta)
+{
+    switch(pasta)
+    {
+        case 'Brasil':
+            return [{label:"São Paulo",
+                tree:[{label:"Barueri"},{label:"Campinas"},{label:"São Paulo"}]}]; 
+        
+        case "Argentina":
+            return [{label:"Buenos Aires"},{label:"Chaco"},{label:"Formosa"}]; 
+    }  
+}
+</pre>
+                
+            </td>
+        </tr>
+        
+    </table>
+    <script>
+var arvoreE = [{
+    label:"Brasil", 
+    tree: "carregarPais('Brasil')"},
+    {
+    label:"Argentina",tree: "carregarPais('Argentina')"}] ;
+
+
+var treeviewE = new Treeview('treeviewE');
+treeviewE.json = arvoreE;
+treeviewE.renderize();
+    
+    
+function carregarPais(pasta)
+{
+    switch(pasta)
+    {
+        case 'Brasil':
+            return [{label:"São Paulo",
+                tree:[{label:"Barueri"},{label:"Campinas"},{label:"São Paulo"}]}]; 
+        
+        case "Argentina":
+            return [{label:"Buenos Aires"},{label:"Chaco"},{label:"Formosa"}]; 
+    }  
+}
+
+
+
+
+    </script>    
+<style type="text/css">
+*{margin:0px;padding:0px;}
+body{margin:20px auto;width:1000px;padding:20px;font-size:12px;font-family:verdana;}
+h1{}
+h2{margin:100px 0px 10px 0px;padding:2px 0px;border-bottom:1px solid #666666;}
+h3{margin:20px 0px 10px 0px;padding:2px 0px;border-bottom:1px solid #666666;}
+hr{margin:20px 0px;}
+p{line-height:25px;}
+pre{margin:0px 0px 10px 0px;padding:20px;background:#eaeaea;border-radius:4px}
+td{vertical-align:top;}
+</style>
+</body>
+</html>
