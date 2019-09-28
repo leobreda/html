@@ -84,11 +84,8 @@ function Treeview(ul)
         let html='';
         document.getElementById(objUL+'_ul_'+level).innerHTML='carregando...';
         
-        if(typeof args.tree=="string"){
-            
+        if(typeof args.tree=="string")       
             args.tree = eval(args.tree);
-
-        }
     
         if(args.tree==undefined)
             html+= ('<li class="tv-file"><a'+(args.onclick!=undefined ? ' onclick="javascript:'+args.onclick.replace(/"/g,'\'')+'"' : '')+(args.class!=undefined ? ' class="'+args.class+'"': '')+(args.style!=undefined ? ' style="'+args.style+'"': '')+'>'+args.label+'</a>');  
