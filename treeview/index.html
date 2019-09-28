@@ -36,17 +36,13 @@
 <h3>Script</h3>
 <pre>
 &lt;script&gt;  
-    var arvore = [{
-        label:"0",
-            tree:[{label:"00"}]},
-                {
-        label:"1",
-            tree:[{label:"12",
-                tree:[{label:"123",
-                    tree:[{label:"1234"}]}]},
-            {label:"34",
-                tree:[{label:"345",
-                    tree:[{label:"3456"}]}]}]}] ;
+var arvore = [{
+    label:"Fruta",
+        tree:[{label:"Maçã"},{label:"Pêra"}]},
+            {
+    label:"Verdura",
+        tree:[{label:"Alface",tree:[{label:"Crespa"},{label:"Lisa"}]},
+            {label:"Pimentão",tree:[{label:"Verde"},{label:"Vermelho"},{label:"Amarelo"}]}]}] ;
 
     var treeview = new Treeview('treeview');
     treeview.json = arvore;
@@ -63,7 +59,7 @@
 </pre>
 #treeview-breadcrumb: <input type="text" id="treeviewA-breadcrumb" style="width:200px" />
                 <h3>Resultado</h3>
-                <ul id="treeviewA" class="treeview" style="max-height:200px;;overflow:auto;padding:10px;border:1px solid #999999;">
+                <ul id="treeviewA" class="treeview" style="height:230px;;overflow:auto;padding:10px;border:1px solid #999999;">
 
                     </ul>
 
@@ -73,13 +69,12 @@
 </table>
 <script>
     var arvoreA = [{
-    label:"0",
-        tree:[{label:"00"}]},
+    label:"Fruta",
+        tree:[{label:"Maçã"},{label:"Pêra"}]},
             {
-    label:"1",
-        tree:[{label:"12",tree:[
-            {label:"123",tree:[{label:"1234"}]}]},
-            {label:"34",tree:[{label:"345",tree:[{label:"3456"}]}]}]}] ;
+    label:"Verdura",
+        tree:[{label:"Alface",tree:[{label:"Crespa"},{label:"Lisa"}]},
+            {label:"Pimentão",tree:[{label:"Verde"},{label:"Vermelho"},{label:"Amarelo"}]}]}] ;
 var treeviewA = new Treeview('treeviewA');
 treeviewA.json = arvoreA;
 treeviewA.renderize();
@@ -280,7 +275,7 @@ treeview.renderize();
     
     </script>    
 <br />
-<p>Carregando pastas e arquivos de forma assíncrona</p>
+<p>Carregando pastas e arquivos via postback, com possibilidade no uso de Ajax síncrono.</p>
 
 
 
@@ -302,7 +297,7 @@ treeview.json = arvore;
 treeview.renderize();
     
 function carregarPais(pasta)
-{
+{  
     switch(pasta)
     {
         case 'Brasil':
@@ -311,6 +306,30 @@ function carregarPais(pasta)
         
         case "Argentina":
             return [{label:"Buenos Aires"},{label:"Chaco"},{label:"Formosa"}]; 
+            // If using Ajax...
+            // var xhr = new XMLHttpRequest();
+            // let obj = [];
+            
+            // // Argentina.ashx returns "Buenos Aires,Chaco,Formosa"
+            // xhr.open("GET", "http://localhost:51788/Argentina.ashx",false);
+            // xhr.onload = function (e) {
+            //     if (xhr.readyState === 4) 
+            //     {
+            //         if (xhr.status === 200) 
+            //         {
+            //             let txt = xhr.responseText.split(',');
+            //             for(i=0;i&lt;txt.length;i++)
+            //                 obj.push({label:txt[i]});
+            //         } 
+            //         else 
+            //             console.error(xhr.statusText);  
+            //     }
+            // };
+            // xhr.onerror = function (e) {
+            //     console.error(xhr.statusText);
+            // };
+            // xhr.send(null);
+            // return obj;
     }  
 }
 </pre>
@@ -333,7 +352,7 @@ treeviewE.renderize();
     
     
 function carregarPais(pasta)
-{
+{  
     switch(pasta)
     {
         case 'Brasil':
@@ -342,10 +361,33 @@ function carregarPais(pasta)
         
         case "Argentina":
             return [{label:"Buenos Aires"},{label:"Chaco"},{label:"Formosa"}]; 
+            // If using Ajax...
+            // var xhr = new XMLHttpRequest();
+            // let obj = [];
+            
+            // // Argentina.ashx returns "Buenos Aires,Chaco,Formosa"
+            // xhr.open("GET", "http://localhost:51788/Argentina.ashx",false);
+            // xhr.onload = function (e) {
+            //     if (xhr.readyState === 4) 
+            //     {
+            //         if (xhr.status === 200) 
+            //         {
+            //             let txt = xhr.responseText.split(',');
+
+            //             for(i=0;i<txt.length;i++)
+            //                 obj.push({label:txt[i]});
+            //         } 
+            //         else 
+            //             console.error(xhr.statusText);  
+            //     }
+            // };
+            // xhr.onerror = function (e) {
+            //     console.error(xhr.statusText);
+            // };
+            // xhr.send(null);
+            // return obj;
     }  
 }
-
-
 
 
     </script>    

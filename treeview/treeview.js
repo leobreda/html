@@ -8,7 +8,7 @@ function Treeview(ul)
    var objUL = ul;
    var parent = this;
 
-    var lastFileChecked;
+   var lastFileChecked;
    document.getElementById(objUL).onclick = function(args)
    {
    
@@ -42,23 +42,19 @@ function Treeview(ul)
             ret= args.firstChild.innerHTML;
 
         else
-        {
             ret = this.renderBreadcrumb(args.parentNode.parentNode) +
-                '/'+args.firstChild.innerHTML;
-        }   
+                '/'+args.firstChild.innerHTML
+
         return ret;
     }
 
 
     this.renderize = function()
-    {
-      
+    {     
         var html = '';
     
         for(let i=0;i<this.json.length;i++)
-        {
             html+=this.renderRoot(this.json[i],i);         
-        }
 
         document.getElementById(objUL).innerHTML=html;  
     }
@@ -68,7 +64,7 @@ function Treeview(ul)
     this.renderRoot = function(args,level)
     {     
         return '<li class="tv-folder"><a onclick="javascript:'+(args.onclick!=undefined ? args.onclick.replace(/"/g,'\'')+';' : '')+objUL+'.openFolder(\''+level+'\');">'+args.label+'</a>'
-        +'<ul id="'+objUL+'_ul_'+level+'"></ul></li>';
+            +'<ul id="'+objUL+'_ul_'+level+'"></ul></li>';
     }
 
     this.openFolder = function(level)
@@ -86,12 +82,14 @@ function Treeview(ul)
     this.renderFolder = function(level,args)
     {
         let html='';
-
+        document.getElementById(objUL+'_ul_'+level).innerHTML='carregando...';
+        
         if(typeof args.tree=="string"){
-            document.getElementById(objUL+'_ul_'+level).innerHTML='carregando...';
+            
             args.tree = eval(args.tree);
-        }
 
+        }
+    
         if(args.tree==undefined)
             html+= ('<li class="tv-file"><a'+(args.onclick!=undefined ? ' onclick="javascript:'+args.onclick.replace(/"/g,'\'')+'"' : '')+(args.class!=undefined ? ' class="'+args.class+'"': '')+(args.style!=undefined ? ' style="'+args.style+'"': '')+'>'+args.label+'</a>');  
        
@@ -100,15 +98,12 @@ function Treeview(ul)
            for(let i=0;i<args.tree.length;i++)
            {
                 if(args.tree[i].tree==undefined)
-                {
                     html+= ('<li class="tv-file"><a'+(args.tree[i].onclick!=undefined ? ' onclick="javascript:'+args.tree[i].onclick.replace(/"/g,'\'')+'"' : '')+(args.tree[i].class!=undefined ? ' class="'+args.tree[i].class+'"': '')+(args.tree[i].style!=undefined ? ' style="'+args.tree[i].style+'"': '')+'>'+args.tree[i].label+'</a>');  
-                }
+
                 else
-                {
-                html+= '<li class="tv-folder"><a onclick="javascript:'+(args.tree[i].onclick!=undefined ? args.tree[i].onclick.replace(/"/g,'\'')+';' : '')+objUL+'.openFolder(\''+level+'_'+i+'\');">'+args.tree[i].label+'</a>';
-                    html+=('<ul id="'+objUL+'_ul_'+level+'_'+i+'"></ul>');
-                    html+=('</li>');
-                }
+                    html+= '<li class="tv-folder"><a onclick="javascript:'+(args.tree[i].onclick!=undefined ? args.tree[i].onclick.replace(/"/g,'\'')+';' : '')+objUL+'.openFolder(\''+level+'_'+i+'\');">'+args.tree[i].label+'</a>'
+                        + '<ul id="'+objUL+'_ul_'+level+'_'+i+'"></ul>'
+                        +'</li>';            
             }
         }
         document.getElementById(objUL+'_ul_'+level).innerHTML=html;
