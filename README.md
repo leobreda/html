@@ -2,7 +2,9 @@
 HTML reutilizáveis 
 
 ## modal
-http://htmlpreview.github.io/?https://github.com/leobreda/html/blob/master/modal/index.html
+Popups modais em javascript
+preview: http://htmlpreview.github.io/?https://github.com/leobreda/html/blob/master/modal/index.html
 
 ## treeview
-http://htmlpreview.github.io/?https://github.com/leobreda/html/blob/master/treeview/index.html
+Organização e visualização de informações organizadas em forma de árvore
+preview: http://htmlpreview.github.io/?https://github.com/leobreda/html/blob/master/treeview/index.html
